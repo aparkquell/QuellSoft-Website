@@ -25,7 +25,16 @@ export async function getAuditPages() {
   if (cachedAuditPages) return cachedAuditPages;
 
   const auditPath = path.join(process.cwd(), "docs", "audit", "current-site-content.md");
-  const raw = await fs.readFile(auditPath, "utf8");
+  let raw: string;
+  try {
+    raw = await fs.readFile(auditPath, "utf8");
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      cachedAuditPages = [];
+      return cachedAuditPages;
+    }
+    throw error;
+  }
   const headings = [...raw.matchAll(/^### (https:\/\/quell-soft\.com\/[^\n]+)$/gm)];
   const pages: AuditPage[] = [];
 
