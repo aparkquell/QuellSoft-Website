@@ -1,6 +1,6 @@
 ﻿import type { ReactNode } from "react";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ExternalLink, Sparkles, Users } from "lucide-react";
+import { ArrowRight, CheckCircle2, ExternalLink, Users } from "lucide-react";
 import type { ContentDoc } from "@/lib/content";
 import type { AuditPage } from "@/lib/audit";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
@@ -8,7 +8,10 @@ import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { ContactForm } from "./contact-form";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
+import { BentoGrid, BentoTile } from "./bento-grid";
+import { AnimatedSignal } from "./animated-signal";
 import { Reveal } from "./reveal";
+import { HomeHero } from "./home-hero";
 
 const services = [
   {
@@ -111,12 +114,12 @@ const homeSpotlights = [
   {
     title: "Direction",
     copy: "Positioning, structure, and a path that supports the next decision.",
-    accent: "from-[rgba(95,150,144,0.22)] to-transparent",
+    accent: "from-[rgba(94,143,255,0.22)] to-transparent",
   },
   {
     title: "Delivery",
     copy: "Web platforms, automation, and internal tools that hold up after launch.",
-    accent: "from-[rgba(178,123,82,0.24)] to-transparent",
+    accent: "from-[rgba(134,176,255,0.24)] to-transparent",
   },
   {
     title: "Industries",
@@ -179,124 +182,32 @@ function SectionHeader({
 export function HomePage() {
   return (
     <div className="mx-auto max-w-7xl px-4 pb-20 pt-12 sm:px-6 lg:px-8">
-      <section className="grid gap-6 xl:grid-cols-12 xl:items-stretch">
-        <Reveal className="xl:col-span-7">
-          <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-[2.5rem] border border-[color:var(--border)] bg-[linear-gradient(145deg,rgba(255,255,255,0.05),rgba(255,255,255,0.012))] p-6 shadow-[0_30px_90px_rgba(0,0,0,0.2)] sm:p-8 lg:p-10 xl:col-span-7">
-            <div className="pointer-events-none absolute inset-0 opacity-80">
-              <div className="absolute -right-24 -top-20 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(95,150,144,0.22),transparent_68%)] blur-3xl" />
-              <div className="absolute -left-16 bottom-0 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(178,123,82,0.16),transparent_70%)] blur-3xl" />
-            </div>
-            <div className="relative grid gap-8">
-              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[color:var(--border)] bg-[color:var(--card)] px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[color:var(--muted-foreground)]">
-                <Sparkles className="h-4 w-4 text-[color:var(--accent)]" />
-                AI-first engineering studio
-              </div>
-              <div className="space-y-5">
-                <h1 className="max-w-4xl font-display text-[clamp(2.9rem,5.9vw,5rem)] leading-[0.9] tracking-tight">
-                  Systems, websites, and automation built for enterprise momentum.
-                </h1>
-                <p className="max-w-2xl text-[0.98rem] leading-8 text-[color:var(--muted-foreground)] sm:text-[1.02rem]">
-                  Quell Soft shapes the interfaces, flows, and digital infrastructure that help teams in healthcare, logistics, and B2B software move faster with less friction.
-                </p>
-              </div>
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <Button asChild size="lg">
-                  <Link href="/contact-us">Start a project</Link>
-                </Button>
-                <Button asChild variant="outline" size="lg">
-                  <Link href="/industries">Explore industries</Link>
-                </Button>
-              </div>
-            </div>
+      <HomeHero />
 
-            <div className="relative mt-10 grid gap-3 sm:grid-cols-3">
-              {[
-                "Enterprise-ready web systems",
-                "AI and workflow delivery",
-                "Industry-specific solutions",
-              ].map((item) => (
-                <div key={item} className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--card)]/85 px-4 py-3 text-sm text-[color:var(--muted-foreground)] backdrop-blur">
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.08} className="xl:col-span-5">
-          <Card className="h-full overflow-hidden border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(17,24,39,0.92),rgba(10,14,22,0.96))]">
-            <CardHeader className="border-b border-white/10">
-              <CardTitle className="text-2xl text-white">What clients come for</CardTitle>
-              <CardDescription className="text-white/70">
-                Deliverables, industry focus, and proof points that make the site feel credible at a glance.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="grid gap-3 p-4 sm:grid-cols-2 sm:p-5">
-              <div className="rounded-[1.35rem] border border-white/10 bg-[linear-gradient(180deg,rgba(95,150,144,0.22),rgba(255,255,255,0.02))] p-5 sm:col-span-2">
-                <p className="text-xs uppercase tracking-[0.24em] text-white/55">Primary deliverables</p>
-                <div className="mt-3 grid grid-cols-2 gap-2">
-                  {["Strategy", "Design", "Build", "Launch support"].map((item) => (
-                    <div key={item} className="rounded-2xl border border-white/10 bg-white/5 px-3 py-3 text-sm text-white/80">
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="rounded-[1.35rem] border border-white/10 bg-white/5 p-5">
-                <p className="text-xs uppercase tracking-[0.24em] text-white/55">Industries</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {["Healthcare", "Logistics", "B2B software"].map((item) => (
-                    <span key={item} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/78">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="rounded-[1.35rem] border border-white/10 bg-white/5 p-5">
-                <p className="text-xs uppercase tracking-[0.24em] text-white/55">Proof</p>
-                <p className="mt-2 text-sm leading-6 text-white/68">
-                  Case studies and snapshots surface before blog content so the homepage reads like a real firm, not a content experiment.
-                </p>
-              </div>
-              <div className="rounded-[1.35rem] border border-white/10 bg-white/5 p-5 sm:col-span-2">
-                <p className="text-xs uppercase tracking-[0.24em] text-white/55">Launch model</p>
-                <p className="mt-2 text-sm leading-6 text-white/68">
-                  The work starts with the current workflow, then moves into a cleaner interface, a simpler delivery path, and a launch plan that can be supported.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </Reveal>
-      </section>
-
-      <section className="mt-8 grid gap-4 lg:grid-cols-12">
-        {homeSpotlights.map((spotlight, index) => (
-          <Reveal
-            key={spotlight.title}
-            className={index === 0 ? "lg:col-span-5" : index === 1 ? "lg:col-span-4" : "lg:col-span-3"}
-          >
-            <Card
-              className="h-full min-w-0 overflow-hidden border-[color:var(--border)]"
-            >
-              <div className={`h-1.5 bg-gradient-to-r ${spotlight.accent}`} />
-              <CardHeader className={index === 0 ? "pb-6" : ""}>
-                <CardTitle className={index === 0 ? "text-[1.45rem]" : "text-xl"}>{spotlight.title}</CardTitle>
-                <CardDescription>{spotlight.copy}</CardDescription>
-              </CardHeader>
-              {index === 0 ? (
-                <CardContent className="pt-0">
+      <section className="mt-8">
+        <Reveal>
+          <BentoGrid>
+            {homeSpotlights.map((spotlight, index) => (
+              <BentoTile
+                key={spotlight.title}
+                className={index === 0 ? "md:col-span-5" : index === 1 ? "md:col-span-4" : "md:col-span-3"}
+                eyebrow="Perspective"
+                title={spotlight.title}
+                description={spotlight.copy}
+              >
+                {index === 0 ? (
                   <div className="grid gap-2 sm:grid-cols-2">
                     {["Systems", "UX", "Automation", "Industries"].map((item) => (
-                      <div key={item} className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--background)] px-4 py-3 text-sm text-[color:var(--muted-foreground)]">
+                      <div key={item} className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-[color:var(--muted-foreground)]">
                         {item}
                       </div>
                     ))}
                   </div>
-                </CardContent>
-              ) : null}
-            </Card>
-          </Reveal>
-        ))}
+                ) : null}
+              </BentoTile>
+            ))}
+          </BentoGrid>
+        </Reveal>
       </section>
 
       <section className="mt-24 grid gap-6 xl:grid-cols-12 xl:items-start">
@@ -347,8 +258,8 @@ export function HomePage() {
         </Reveal>
         <Reveal delay={0.08}>
           <div className="mt-8 grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
-            <Card className="overflow-hidden border-[color:var(--border)]">
-              <div className="h-1.5 bg-[linear-gradient(90deg,rgba(95,150,144,0.9),rgba(178,123,82,0.75))]" />
+            <Card className="overflow-hidden border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.016))] shadow-[var(--shadow-soft)] backdrop-blur-xl">
+              <div className="h-1.5 bg-[linear-gradient(90deg,rgba(94,143,255,0.9),rgba(134,176,255,0.75))]" />
               <CardHeader className="border-b border-[color:var(--border)]">
                 <CardTitle className="text-3xl">{industries[0].title}</CardTitle>
                 <CardDescription>{industries[0].body}</CardDescription>
@@ -377,8 +288,8 @@ export function HomePage() {
             </Card>
 
             <div className="grid gap-4">
-              {industries.slice(1).map((industry, index) => (
-                <Card key={industry.id} className={index === 0 ? "border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.012))]" : ""}>
+              {industries.slice(1).map((industry) => (
+                <Card key={industry.id} className="border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.012))] shadow-[var(--shadow-soft)] backdrop-blur-xl">
                   <CardHeader>
                     <CardTitle className="text-2xl">{industry.title}</CardTitle>
                     <CardDescription>{industry.summary}</CardDescription>
@@ -392,20 +303,12 @@ export function HomePage() {
                   </CardContent>
                 </Card>
               ))}
-              <Card className="border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(95,150,144,0.09),rgba(255,255,255,0.015))]">
-                <CardHeader>
-                  <CardTitle className="text-2xl">Why this layout works</CardTitle>
-                  <CardDescription>
-                    Healthcare gets the primary position, while the other industries stay visible without competing for equal weight.
-                  </CardDescription>
-                </CardHeader>
-              </Card>
             </div>
           </div>
         </Reveal>
       </section>
 
-      <section className="mt-24 grid gap-8 lg:grid-cols-[1fr_0.95fr]">
+      <section className="mt-24">
         <Reveal>
           <SectionHeader
             eyebrow="FAQ"
@@ -414,7 +317,7 @@ export function HomePage() {
           />
         </Reveal>
         <Reveal delay={0.08}>
-          <Card>
+          <Card className="mt-8 border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.016))] shadow-[var(--shadow-soft)] backdrop-blur-xl">
             <CardContent className="px-6 py-2">
               <Accordion type="single" collapsible>
                 <AccordionItem value="what">
@@ -441,7 +344,7 @@ export function HomePage() {
         </Reveal>
       </section>
 
-      <section className="mt-24 grid gap-8 lg:grid-cols-[1.02fr_0.98fr]">
+      <section className="mt-24">
         <Reveal>
           <SectionHeader
             eyebrow="Selected work"
@@ -450,9 +353,23 @@ export function HomePage() {
           />
         </Reveal>
         <Reveal delay={0.08}>
-          <div className="grid gap-4">
+          <AnimatedSignal
+            className="mt-8"
+            eyebrow="Proof signal"
+            title="A calmer route from brief to build."
+            description="The visual rhythm mirrors the work: clarify the direction, structure the handoff, then keep the release path legible."
+            points={[
+              { label: "Brief", x: 70, y: 118 },
+              { label: "Direction", x: 192, y: 92 },
+              { label: "Build", x: 322, y: 126 },
+              { label: "Launch", x: 452, y: 78 },
+            ]}
+          />
+        </Reveal>
+        <Reveal delay={0.1}>
+          <div className="mt-8 grid gap-4">
             {caseStudies.slice(0, 2).map((study) => (
-              <Card key={study.title}>
+              <Card key={study.title} className="border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.016))] shadow-[var(--shadow-soft)] backdrop-blur-xl">
                 <CardHeader>
                   <CardTitle className="text-xl">{study.title}</CardTitle>
                   <CardDescription>{study.description}</CardDescription>
@@ -468,7 +385,7 @@ export function HomePage() {
                 </CardContent>
               </Card>
             ))}
-            <Card className="border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.012))]">
+            <Card className="border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.012))] shadow-[var(--shadow-soft)] backdrop-blur-xl">
               <CardHeader>
                 <CardTitle className="text-xl">Reliable proof</CardTitle>
                 <CardDescription>
@@ -480,7 +397,7 @@ export function HomePage() {
         </Reveal>
       </section>
 
-      <section className="mt-24 grid gap-8 lg:grid-cols-[1fr_0.95fr]">
+      <section className="mt-24">
         <Reveal>
           <SectionHeader
             eyebrow="Insights"
@@ -489,9 +406,23 @@ export function HomePage() {
           />
         </Reveal>
         <Reveal delay={0.08}>
-          <div className="grid gap-4">
+          <AnimatedSignal
+            className="mt-8"
+            eyebrow="Content signal"
+            title="Search-friendly structure, not keyword noise."
+            description="The blog now has a visual place in the system, with a sequence that suggests research, writing, release, and iteration."
+            points={[
+              { label: "Research", x: 78, y: 124 },
+              { label: "Write", x: 192, y: 84 },
+              { label: "Release", x: 314, y: 120 },
+              { label: "Iterate", x: 444, y: 88 },
+            ]}
+          />
+        </Reveal>
+        <Reveal delay={0.1}>
+          <div className="mt-8 grid gap-4">
             {blogPosts.map((post, index) => (
-              <Card key={post.title} className={index === 0 ? "border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(95,150,144,0.09),rgba(255,255,255,0.015))]" : ""}>
+              <Card key={post.title} className={index === 0 ? "border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(94,143,255,0.09),rgba(255,255,255,0.015))] shadow-[var(--shadow-soft)] backdrop-blur-xl" : "border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.016))] shadow-[var(--shadow-soft)] backdrop-blur-xl"}>
                 <CardHeader>
                   <CardTitle className="text-xl">{post.title}</CardTitle>
                   <CardDescription>{post.description}</CardDescription>
@@ -900,7 +831,7 @@ function HealthcareIndustryPage({ doc }: { doc: ContentDoc<"industry"> }) {
             title="A vertical landing page should guide the eye, not trap it."
             description="The goal is to make the route feel specific enough to remember and flexible enough to expand later."
           />
-          <div className="mt-6 rounded-[1.5rem] border border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(95,150,144,0.08),rgba(255,255,255,0.015))] p-6">
+            <div className="mt-6 rounded-[1.5rem] border border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(94,143,255,0.08),rgba(255,255,255,0.015))] p-6">
             <p className="text-sm leading-7 text-[color:var(--muted-foreground)]">
               This layout treats healthcare like an operational story: show the friction, show the change, and then leave room for the source draft if someone wants more detail.
             </p>

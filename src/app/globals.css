@@ -5,6 +5,15 @@
   --font-display: "Fraunces";
   --font-body: "Manrope";
   --font-mono: "JetBrains Mono";
+  --radius-shell: 2rem;
+  --radius-card: 1.5rem;
+  --radius-pill: 9999px;
+  --shadow-soft: 0 1px 0 rgba(255, 255, 255, 0.03), 0 22px 52px rgba(0, 0, 0, 0.18);
+  --shadow-lift: 0 1px 0 rgba(255, 255, 255, 0.04), 0 30px 80px rgba(0, 0, 0, 0.28);
+  --shadow-ambient: 0 24px 80px rgba(0, 0, 0, 0.32);
+  --mesh-blue: rgba(96, 158, 255, 0.18);
+  --mesh-cool: rgba(86, 120, 255, 0.14);
+  --mesh-ink: rgba(255, 255, 255, 0.05);
   --background: #071012;
   --foreground: #f1f7f6;
   --muted: #111b1e;
@@ -12,9 +21,9 @@
   --card: rgba(11, 19, 22, 0.96);
   --card-foreground: #f1f7f6;
   --border: rgba(179, 198, 194, 0.16);
-  --accent: #7acfd4;
+  --accent: #5e8fff;
   --accent-foreground: #031114;
-  --ring: #7acfd4;
+  --ring: #5e8fff;
 }
 
 [data-theme="light"],
@@ -27,9 +36,9 @@
   --card: rgba(255, 255, 255, 0.9);
   --card-foreground: #091316;
   --border: rgba(10, 20, 24, 0.12);
-  --accent: #0f6670;
+  --accent: #2458d9;
   --accent-foreground: #ffffff;
-  --ring: #0f6670;
+  --ring: #2458d9;
 }
 
 @theme inline {
