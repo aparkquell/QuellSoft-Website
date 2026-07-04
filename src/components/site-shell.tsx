@@ -5,6 +5,7 @@ import { Menu } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { withBasePath } from "@/lib/base-path";
 
 const navLinks = [
   { href: "/services", label: "Services" },
@@ -22,7 +23,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center">
             <Image
-              src="/quellsoft-logo.svg"
+              src={withBasePath("/quellsoft-logo.svg")}
               alt="Quell Soft"
               width={180}
               height={48}
@@ -79,7 +80,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <footer className="border-t border-[color:var(--border)] bg-[linear-gradient(180deg,transparent,rgba(255,255,255,0.015))]">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.5fr_1fr_1fr] lg:px-8">
           <div className="space-y-4">
-            <Image src="/quellsoft-logo.svg" alt="Quell Soft" width={180} height={48} className="h-10 w-auto" />
+            <Image src={withBasePath("/quellsoft-logo.svg")} alt="Quell Soft" width={180} height={48} className="h-10 w-auto" />
             <p className="max-w-md text-sm leading-7 text-[color:var(--muted-foreground)]">
               AI-first software systems, workflow automation, and vertical solutions built for teams that need
               more than a marketing site.
