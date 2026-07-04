@@ -1,8 +1,8 @@
 "use client";
 
 import { MoonStar, SunMedium } from "lucide-react";
-import { useTheme } from "next-themes";
 import { Button } from "./ui/button";
+import { useTheme } from "./theme-provider";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -20,4 +20,3 @@ export function ThemeToggle() {
     </Button>
   );
 }
-

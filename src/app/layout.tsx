@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
       <body className="min-h-full bg-background font-body text-foreground">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="quellsoft-theme">
+        <ThemeProvider defaultTheme="dark" storageKey="quellsoft-theme">
           <SiteShell>{children}</SiteShell>
         </ThemeProvider>
       </body>

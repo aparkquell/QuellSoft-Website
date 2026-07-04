@@ -17,7 +17,7 @@ const navLinks = [
 
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.05),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(178,123,82,0.08),_transparent_22%),radial-gradient(circle_at_top_right,_rgba(71,85,105,0.06),_transparent_20%),linear-gradient(180deg,var(--background),var(--background))] text-[color:var(--foreground)]">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.05),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(95,143,255,0.09),_transparent_22%),radial-gradient(circle_at_top_right,_rgba(71,85,105,0.06),_transparent_20%),linear-gradient(180deg,var(--background),var(--background))] text-[color:var(--foreground)]">
       <header className="sticky top-0 z-40 border-b border-[color:var(--border)] bg-[color:var(--background)]/88 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center">
